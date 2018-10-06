@@ -1,39 +1,50 @@
-const todosAlunos = document.querySelectorAll(".aluno");
+const btn = document.querySelector("#adicionar-aluno");
 
-// console.log(todosAlunos);
-
-// const ana = "ana";
-// const leti = "leti";
-// const jub = "jub";
-
-// const todasAlunas = ["ana", "leti", "jub"];
-// console.log(todasAlunas);
-
-// for (let indice = 0; indice < todosAlunos.length; indice++) {
-
-//.lenght está contando a quantidade de classes .aluno que existem
-for (let i = 0; i < todosAlunos.length; i++) {
-    console.log(todosAlunos[i]); //pq não mostra esse console.log quando executado?
-    const aluno = todosAlunos[i]; //seleciona todos os alunos listados
-
-    const tdPrimeiraNota = aluno.querySelector(".info-notaum"); // campo
-    const primeiraNota = tdPrimeiraNota.textContent; // conteúdo
-    console.log(primeiraNota); // imprimir 
-
-    const tdSegundaNota = aluno.querySelector(".info-notadois");
-    const segundaNota = tdSegundaNota.textContent;
-    console.log(segundaNota);
-
-    const mediaFinal = aluno.querySelector(".info-media");
-    const mediaCalculada = (parseFloat(primeiraNota) + parseFloat(segundaNota)) / 2;
-    console.log(mediaCalculada);
-    //.toFixed(2) converte um número em uma string, mantendo o número de decimais dela fixo
-    mediaFinal.textContent = mediaCalculada.toFixed(2);
-
-    if (mediaCalculada < 5){
-        //aluno.style.backgroundColor = "red";s
-        aluno.classList.add("abaixo-da-media");
-    }
+btn.addEventListener('click', function(event){
+    event.preventDefault();
     
-}  
+    const form = document.querySelector("#form-adiciona");
+    //funcão que pega os dados do input, através do objeto
+    const novoAluno =  dadosAlunos(form);
 
+    const alunoTr = document.createElement("tr");
+
+    const nomeTd = document.createElement("td");
+    const notaUmTd = document.createElement("td");
+    const notaDoisTd = document.createElement("td");
+    const mediaTd = document.createElement("td");
+
+    nomeTd.textContent = novoAluno.nomeAluno;
+    notaUmTd.textContent = novoAluno.notaUmAluno;
+    notaDoisTd.textContent = novoAluno.notaDoisAluno;
+    mediaTd.textContent = novoAluno.mediaAluno;
+
+    alunoTr.appendChild(nomeTd);
+    alunoTr.appendChild(notaUmTd);
+    alunoTr.appendChild(notaDoisTd);
+    alunoTr.appendChild(mediaTd);
+
+    const tabela = document.querySelector("#tabela-alunos");
+    tabela.appendChild(alunoTr);
+
+    if (novoAluno.mediaAluno < 5){
+        alunoTr.classList.add("abaixo-da-media")
+    }
+
+});
+
+function dadosAlunos(formulario){
+    const objetoAluno = {
+        nomeAluno: formulario.nome.value,
+        notaUmAluno: formulario.notaum.value,
+        notaDoisAluno: formulario.notadois.value,
+        mediaAluno: mediaAlunos(formulario.notaum.value, formulario.notadois.value)
+    }
+    return objetoAluno;
+}
+
+function mediaAlunos(primeiroValor, segundoValor){
+    let mediaAlunos = 0;
+    mediaAlunos = (parseFloat(primeiroValor) + parseFloat(segundoValor)) / 2;
+    return mediaAlunos;
+}
