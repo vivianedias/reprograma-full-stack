@@ -1,0 +1,14 @@
+>>HADDAD PRESIDENTE 13<<
+
+08-10-18 
+
+Código Funcional
+>Refatoração do código
+Hoisting
+>JS joga as variáveis pra cima do código
+
+09-10
+Exercício
+
+10-10
+https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q
