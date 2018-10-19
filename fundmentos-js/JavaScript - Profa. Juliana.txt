@@ -12,3 +12,28 @@ Exercício
 
 10-10
 https://www.youtube.com/channel/UCO1cgjhGzsSYb1rsB4bFe4Q
+
+15-10
+
+for of
+for in
+.map
+filter
+reduce
+for each
+join -- junta os elementos de uma array e retorna uma string
+template string `Posso usar a estrutura do HTML normal dentro das crases`
+${} -- pode inserir dado variável
+
+
+//let nome = "Juliana"
+`
+<div>
+    <h1>${nome}</h1>
+</div>
+`
+> empurrar para dentro da array um novo item (produto), que é um objeto
+> valores da propriedade imagens estão dentro de outra array
+> event.preventDefault(); -- não queremos que o que foi inserido vá embora ao recarregar
+> fazer o map rodar de novo
+nome || valor || imagem || botão incluir
