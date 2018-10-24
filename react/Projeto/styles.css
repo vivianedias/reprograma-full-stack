@@ -49,6 +49,18 @@ body {
   border-color: lightgrey;
 }
 
+.botao-danger {
+  color: #000;
+  background: rgb(255, 0, 0);
+  border-color: lightgrey;
+}
+
+.botao-warning {
+  color: gray;
+  background: yellow;
+  border-color: lightgrey;
+}
+
 .link {
   cursor: pointer;
   color: #9351b4;
