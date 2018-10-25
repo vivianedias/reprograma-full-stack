@@ -1,0 +1,45 @@
+Semana de React - Profª. Camila
+
+22-10
+Como iniciar projetos?
+- As pessoas do design mandam os screenshots de telas que devo fazer, prontas.
+- A partir daí parto para realiza-los
+    *Antes disso, identifico as partes da tela
+        > Quais delas se repetem e eu posso as reutilizar?
+- Componente é formado por elementos
+Ex: cartões > paragratos, figuras, headers
+- Prestar atenção nos elementos que se repetem
+    *Esses devem ser nomeados como componentes, para que se possa fazer o reuso deles nas outras partes do site
+        >Ex: o formulário pode se repetir seguindo uma mesma formula em diferentes páginas, então criar um componente só para ele para facilitar (como se fosse um template)
+- O que colocamos dentro do assets?
+    *Tudo que não for código
+- Porque as empresas chamam as pastas com bibliotecas de vendor?
+    *Porque elas são bibliotecas de terceiros
+-.gitignore
+    *São os files que eu não quero que o Git faça commit
+
+- O .render faz o DOM virtual mergir com o DOM real
+- Ferramentas Transpiladoras permitem que você escreva de uma forma diferente do código puro.
+    *Ex: escrever, usando React, em um modelo muito similar ao HTML
+        >JSX é o nome do modo citado acima - Babel converte para React puro
+
+23-10
+- Posso criar tags
+    *Tag inventada começa com letra maiúscula (para que o React consiga diferenciar)
+- Atributos da tag pode ser qualquer expressão válida JS
+- Se ele é um componente eu preciso criar uma tag para ele
+- Quando você quer criar uma tag, você tem que crirar uma função com o mesmo nome da tag
+- Toda função de tag tem que retornar o HTML da tag
+- Node possui um gerenciador de bibliotecas
+- Projeto na vida real é importante preencher o 'package.json'
+- Mudar todos os nomes para 'index.extensao'
+- Instalar as dependencias npm install --save x
+    *react
+    *react-dom
+    *react-script
+- package.json 
+    "start": "react-scripts start"
+- Adc no início do index.js :
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+    import './index.css'
