@@ -43,3 +43,17 @@ Ex: cartões > paragratos, figuras, headers
     import React from 'react'
     import ReactDOM from 'react-dom'
     import './index.css'
+
+24-10
+Faltei
+
+25-10
+Mexendo com Netlify
+    *Versão para subir =/ das versões 'originais'
+        >Isso para gerar uma versão mais compacta, que vai ser lida mais facilmente pelo browser, mais rápido
+npm start - esse nome 'start' está no 'package.json', scripts
+    *Todas as vezes que baixar um projeto do GitHub (ele não vem com o node_modules), dar node start
+        >Esse nome start pode ser diferente, como xuxu, mas se usa start
+npm run build - o que vamos upar para o servidor
+    *Esse build também foi inserido dentro de 'package.json', com um nome certo escolhido
+        >Esse comando só é rodado quando tiver uma versão pronta para ser subida pro servido
