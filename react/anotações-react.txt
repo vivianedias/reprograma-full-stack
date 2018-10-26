@@ -48,12 +48,25 @@ Ex: cartões > paragratos, figuras, headers
 Faltei
 
 25-10
-Mexendo com Netlify
+- Mexendo com Netlify
     *Versão para subir =/ das versões 'originais'
         >Isso para gerar uma versão mais compacta, que vai ser lida mais facilmente pelo browser, mais rápido
-npm start - esse nome 'start' está no 'package.json', scripts
+- npm start - esse nome 'start' está no 'package.json', scripts
     *Todas as vezes que baixar um projeto do GitHub (ele não vem com o node_modules), dar node start
         >Esse nome start pode ser diferente, como xuxu, mas se usa start
-npm run build - o que vamos upar para o servidor
+- npm run build - o que vamos upar para o servidor
     *Esse build também foi inserido dentro de 'package.json', com um nome certo escolhido
-        >Esse comando só é rodado quando tiver uma versão pronta para ser subida pro servido
+        >Esse comando só é rodado quando tiver uma versão pronta para ser subida pro servidor
+- Estados são importantes 
+    *Cada componente tem o seu objeto estado (true/false)
+    *Sempre que quisermos alterar a tela temos que alterar o estado do componente
+        > Habilitado-desabilitado / aberto-fechado
+
+Um pouco do que vi no curso do JS Ninja:
+    class Pessoa {
+        constructor(nomeRecebido, sobrenomeRecebido){
+            this.nome = nomeRecebido
+            this.sobrenome = sobrenomeRecebido
+        }
+    }
+    const camis = new Pessoa('Camila', 'Belo')
