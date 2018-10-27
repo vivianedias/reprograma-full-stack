@@ -61,8 +61,9 @@ Faltei
     *Cada componente tem o seu objeto estado (true/false)
     *Sempre que quisermos alterar a tela temos que alterar o estado do componente
         > Habilitado-desabilitado / aberto-fechado
-
-Um pouco do que vi no curso do JS Ninja:
+- Estudar mais sobre 'class' em JS
+    *o que é 'extends', 'super', 'this.' e 'constructor'
+Camila está exemplificando 'class' (Um pouco do que vi no curso do JS Ninja)
     class Pessoa {
         constructor(nomeRecebido, sobrenomeRecebido){
             this.nome = nomeRecebido
@@ -70,3 +71,138 @@ Um pouco do que vi no curso do JS Ninja:
         }
     }
     const camis = new Pessoa('Camila', 'Belo')
+
+    class Paciente extends Pessoa{
+        constructor(nomeRecebido, sobrenomeRecebido, pesoRecebido, alturaRecebida){
+            super (nomeRecebido, sobrenomeRecebido)
+            this.peso = pesoRecebido
+            this.altura = alturaRecebida
+        }
+    }
+
+    class Animal{
+        constructor(racaRecebida, anosRecebidos, foiVacinado){
+            this.raca = racaRecebida
+            this.anos = anosRecebidos
+            this.vacinado = foiVacinado
+        }
+        vacinar(){
+            this.vacinado = true
+        }
+    }
+-A função construtora recebe tudo que ela precisa para construir o objeto
+- Quando quero acessar algo da própria classe, utilizo o 'this'
+- Dentro de classe não precisamos usar a palavra function
+
+26-10
+
+> Estudando criação de objetos em JavaScript <
+
+State of JavaScript
+- There isn't a default JS enviroment
+    *Várias empresas adotam diferentes padrões, e ninguém nunca parou para estabelecer um default como em outras linguagens, ex, Python
+- Em vista disso, não existe um "jeito certo" de fazer object orientation in JS
+
+let dog = {
+    sound: 'woof',
+    talk: function() {
+        console.log(this.sound)
+    }
+}
+
+dog.talk() // "woof"
+
+- In JS, I can assign a function to a variable
+    *Podemos fazer isso porque JS também é uma functional programming language, além de ser uma object oriented language
+
+let talkFunction = dog.talk
+talkFunction() // undefined --- porque??
+
+- Quando ações como essa acima são chamadas, elas batem de frente com o conceito funcional/objeto da linguagem
+    * Ou seja, o 'this' da variavel dog, não se refere mais a dog quando chamada nesse contexto
+    *Colocando de um modo mais visual:
+        let talkFunction = function() {
+            console.log(this.sound) -- esse this não está mais se referindo a nada, ele não funciona nesse cenário
+        }
+        talkFunction() // undefined
+- Forçando a conexão:
+    let talkFunction = dog.talk
+    let boundFunction = talkFunction.bind(dog) --- .bind força o this ficar preso a dog 
+    boundFunction() // woof
+
+- Ex mais comum no dia a dia:
+    let button = document.getElementById('myNiceButton')
+
+    button.addEventListener('click', dog.talk.bind(dog)) --- bind prende o this ao dog
+
+Mais exemplos usando this:
+
+    function talk() {
+        console.log(this.sound)
+    }
+    let boromir = {
+        sound: 'Onde does not simply walk into mordor!'
+    }
+
+    let talkBoundToBoromir = talk.bind(boromir)
+    talkBoundToBoromir() // Onde does not simply walk into mordor!
+
+- Em JS, funções também são valores que você simplesmente pode passar por ai -- igual strings, boolean, números
+
+- Outro exemplo diferente, em que não se precisa usar a propriedade bind
+    let talk = function () {
+        console.log(this.sound)
+    }
+    let boromir = {
+        speak: talk,
+        sound: 'Onde does not simply walk into mordor!'
+    }
+    boromir.speak() // Onde does not simply walk into mordor!
+    talk() // undefined
+    * Não se precisa usar bind pois JS entende que quando você passa talk como uma propriedade e atrela ela a boromir, this se refere a boromir
+    * 'talk()' retorna undefined porque está se referindo ao escopo global
+
+// * - - - - - - - - - - - - - - - -  - - - - - - -  - - - - - - -  - - - - - - * //
+
+Aula 5 
+
+..REVISANDO
+- Quando meu componente muda de estado, eu uso uma classe e não uma função
+
+- Sobre CAMPOS
+    * O componente pode mudar de estado?
+        > Sim
+    * O que muda? 
+        > state = {erro:"} ou {erro: 'Campo Obrigatório'}
+    * Qual o estado inicial? 
+        > state = {erro: "} //constructor
+    * O que faz ele mudar? // function onChange que verifica e eu devo ou na mostrar uma mensagem de erro
+        > if condição mostra erro
+            -- Email: obrigatorio, pelo menos 10 caracteres
+            -- Senha: obrigatorio, pelo menos 6 caracteres
+        > evento de change (digita no campo)
+        > evento de blur (sai do campo)
+
+- Toda classe que tem um componente precisa ter um render
+    * A função render deve retornar o HTML da tela
+    * A função render não recebe parâmetro
+        > No exemplo do código, preciso usar o this. para acessar o props
+
+class Pessoa {
+    constructor(nome, sobrenome){
+        this.nome = nome
+        this.sobrenome = sobrenome
+    }
+}
+
+class Paciente extends Pessoa {
+    constructor(peso, altura){
+        this.peso = peso
+        this.altura = altura
+    }
+}
+
+const Camila = new Paciente(54,170) // erro
+
+
+functio valida() {} === const valida = () => {}
