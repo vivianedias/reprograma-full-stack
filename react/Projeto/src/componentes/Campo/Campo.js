@@ -1,22 +1,15 @@
 import React, { Component } from 'react'
 import './Campo.css'
 
-/*
-1) O componente pode mudar de estado? Sim // Class
-2) O que muda? setState({ erro: '' }) ou  // setState({ erro: '' })
-3) Qual o estado inicial? state = { erro: '' } // constructor
-4) O que faz ele mudar?
-// function onChange pra verificar se devemos exibir mensagem de erro
-- Email: obrigatório e válido
-- Senha: obrigatório e 6 caracteres
-*/
 class Campo extends Component {
   constructor(props) {
     super(props)
-    this.state = { 
-      modificado: false, 
-      erro: '' 
-    }
+    this.valor = ''
+    this.state = { modificado: false, erro: '' }
+  }
+
+  getValor() {
+    return this.valor;
   }
 
   temErro = () => {
@@ -30,6 +23,9 @@ class Campo extends Component {
   valida = (evento) => {
     const input = evento.target
     const { value, type } = input
+
+    this.valor = value
+
     const { required, minLength } = this.props
     const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     let mensagem = ''
