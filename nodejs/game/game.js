@@ -1,37 +1,37 @@
+/////////////////////////////////////////////////////////////////
+//                       CRIANDO A QUESTÃO
+/////////////////////////////////////////////////////////////////
 const readline = require('readline')
-// criar numero random, store (0 a 100)
 
-
-// input adivinhar número
 const io = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
+/////////////////////////////////////////////////////////////////
+//                       PERGUNTA
+/////////////////////////////////////////////////////////////////
 function perguntar() {
     io.question('Adivinhe um número de 0 a 100!', (answer) => {
-        let resposta = parseFloat(answer)
-        condicao(resposta);
+        if (!/^[0-9]+$/.test(answer)){
+            console.log('Somente números são caracteres válidos.')
+            perguntar();
+        } else{
+            let resposta = parseFloat(answer);
+            condicoes(resposta);
+        }   
     })
 }
 
-
-function jogarNovamente(){
-    io.question('Deseja jogar novamente? Responda "s" para SIM ou "n" para NÃO.', (answer) => aceitou(answer));
-}
-
-function aceitou(answer){
-    let baixinha = answer.toLowerCase();
-    if (baixinha === 's'){
-        perguntar();
-    } else{
-        io.close();
-    }
-}
-
+/////////////////////////////////////////////////////////////////
+//                   GERAR NÚMERO RANDOMICO
+/////////////////////////////////////////////////////////////////
 let numeroRandom = Math.floor(Math.random() * (100 - 0) + 0);
 
-function condicao(answer) {
+/////////////////////////////////////////////////////////////////
+//                CONDIÇÕES PARA A RESPOSTA
+/////////////////////////////////////////////////////////////////
+function condicoes(answer) {
     console.log(numeroRandom);
     if (answer === numeroRandom) {
         console.log('Parabéns! Você é foda.');
@@ -45,19 +45,28 @@ function condicao(answer) {
     }
 }
 
+/////////////////////////////////////////////////////////////////
+//                      JOGAR NOVAMENTE?
+/////////////////////////////////////////////////////////////////
+function jogarNovamente(){
+    io.question('Deseja jogar novamente? Responda "s" para SIM ou "n" para NÃO.', (answer) => aceitou(answer));
+}
+
+function aceitou(answer){
+    let baixinha = answer.toLowerCase();
+    if (baixinha === 's'){
+        perguntar();
+    } else{
+        io.close();
+    }
+}
+
+
+
+/////////////////////////////////////////////////////////////////
+//                      RODAR O JOGO
+/////////////////////////////////////////////////////////////////
 perguntar();
-
-
-
-
-//  condicionais acertou ou não *console.log    
-// se não acertou >>
-    // maior ou menor?
-
-// bônus:
-// se acertar jogar novamente ou parar o programa
-
-// caracter invalido - só pode números
 
 // transformar em módulo npm
 // subir no npm
