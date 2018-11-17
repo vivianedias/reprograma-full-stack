@@ -9,6 +9,41 @@ const io = readline.createInterface({
 });
 
 /////////////////////////////////////////////////////////////////
+//                       DIFICULDADE
+/////////////////////////////////////////////////////////////////
+function selecioneDificuldade(){
+    io.question('Selecione uma dificuldade: Fácil, Médio, Difícil.', (answer) => {
+        const baixinha = answer.toLowerCase();
+        if(baixinha === 'fácil' || baixinha === 'facil'){
+            console.log('Você selecionou a dificuldade Fácil!')
+            i = 0;
+            while(i <= 20){
+                perguntar();
+                i++;
+            }
+        } else if (baixinha === 'médio' || baixinha === 'medio'){
+            console.log('Você selecionou a dificuldade Média.')
+            i = 0;
+            while(i <= 12){
+                perguntar();
+                i++;
+            }
+        } else if(baixinha === 'difícil' || baixinha === 'dificil'){
+            console.log('Você selecionou a dificuldade Difícil.')
+            i = 0;
+            while(i <= 3){
+                perguntar();
+                i++;
+            }
+            counter = 3; 
+            while(counter === 4){
+
+            }
+        }
+    }) 
+}
+
+/////////////////////////////////////////////////////////////////
 //                       PERGUNTA
 /////////////////////////////////////////////////////////////////
 function perguntar() {
@@ -53,7 +88,7 @@ function jogarNovamente(){
 }
 
 function aceitou(answer){
-    let baixinha = answer.toLowerCase();
+    const baixinha = answer.toLowerCase();
     if (baixinha === 's'){
         perguntar();
     } else{
@@ -66,7 +101,7 @@ function aceitou(answer){
 /////////////////////////////////////////////////////////////////
 //                      RODAR O JOGO
 /////////////////////////////////////////////////////////////////
-perguntar();
+selecioneDificuldade();
 
 // transformar em módulo npm
 // subir no npm
