@@ -1,0 +1,20 @@
+>> Redux Week <<< 
+
+Bases do Redux - Functional programming
+    *pure functions, data immutability, higher order functions e currying
+
+Reducer é uma função que recebe dois parâmetros (state, action )
+    - Receber um estado atual e uma ação, e como o estado vai ficar depois 
+    de modificado
+    - Vai receber toda e qualquer ação que for disparada
+    - Caso não seja passado um estado inicial, é colocado um state "primário"
+    - Ação(action) é um objeto que tem tipo (obrigatóriamente) e opcionalmente 
+    outros atributos
+    - Quando a gente tem mais de uma função no reducer, precisamos combinar 
+    essas duas funções e passar elas para a store 
+    - Precisa realizar a ligação entre a store e os redutores
+    - Para o redux: existem componentes containers que acessam o store e conseguem
+    disparar ações
+Redux não foi desenhado para trabalhar com React especificamente, por isso é necessário utilizar o package 'react-redux'.
+    - Com isso é possível passar os state e dispatch's do Redux como props para os componentes do React
+    

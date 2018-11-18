@@ -1,0 +1,39 @@
+12-11-18
+
+> Aula 1
+Caminhos para aprender NodeJs
+-I/O, abreviação para Input e Output, é m termo que se refere a um programa capaz de gerar entrada e saída de dados.
+- Threads são como pequenos programas responsáveis por gerencias tarefas.
+Synchronous, blocking i/o
+- Ficar esperando enquanto algo acontece - vários garçons, vários Threads
+Asynchronous, non-blocking i/O
+- Um garçom que faz vários pedidos, não faz os clientes esperarem
+Tem dificuldade em lidar com aplicações que precisam de muita CPU
+- Métodos privados
+
+> Aula 2
+Não fui
+
+> Aula 3
+Event: um sinal que indica que algo aconteceu na aplicação
+Criamos uma class HTTP para criar um webserver 
+    - Uma classe é um container para um monte de métodos relacionados e propriedades
+    - todas as vezes que recebemos um request o htpp levanta um 'Event: New Request'
+        *Ler o request e voltar alguma resposta que condiza com o pedido
+EventEmitter
+Ex:
+// Raise an event
+emitter.emit('messageLogged'); // making a noise, produce something - signalling
+
+// Listener is a function that would be called when the event is raised
+// Register a Listener
+emitter.on('messageLogged', function(){ // parecido com addEventListener
+
+})
+
+-emitter.emit(eventName[, ...args])
+-emitter.listeners(eventName)
+-emitter.on(eventName, listener)
+- Comunicação da API com o banco de dados se chama persistência
+- Pegando o objeto e transformando em JSON -> para criar um server 
+- Loadash

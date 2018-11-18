@@ -1,0 +1,211 @@
+Semana de React - Profª. Camila
+
+22-10
+Como iniciar projetos?
+- As pessoas do design mandam os screenshots de telas que devo fazer, prontas.
+- A partir daí parto para realiza-los
+    *Antes disso, identifico as partes da tela
+        > Quais delas se repetem e eu posso as reutilizar?
+- Componente é formado por elementos
+Ex: cartões > paragratos, figuras, headers
+- Prestar atenção nos elementos que se repetem
+    *Esses devem ser nomeados como componentes, para que se possa fazer o reuso deles nas outras partes do site
+        >Ex: o formulário pode se repetir seguindo uma mesma formula em diferentes páginas, então criar um componente só para ele para facilitar (como se fosse um template)
+- O que colocamos dentro do assets?
+    *Tudo que não for código
+- Porque as empresas chamam as pastas com bibliotecas de vendor?
+    *Porque elas são bibliotecas de terceiros
+-.gitignore
+    *São os files que eu não quero que o Git faça commit
+
+- O .render faz o DOM virtual mergir com o DOM real
+- Ferramentas Transpiladoras permitem que você escreva de uma forma diferente do código puro.
+    *Ex: escrever, usando React, em um modelo muito similar ao HTML
+        >JSX é o nome do modo citado acima - Babel converte para React puro
+
+23-10
+- Posso criar tags
+    *Tag inventada começa com letra maiúscula (para que o React consiga diferenciar)
+- Atributos da tag pode ser qualquer expressão válida JS
+- Se ele é um componente eu preciso criar uma tag para ele
+- Quando você quer criar uma tag, você tem que crirar uma função com o mesmo nome da tag
+- Toda função de tag tem que retornar o HTML da tag
+- Node possui um gerenciador de bibliotecas
+- Projeto na vida real é importante preencher o 'package.json'
+- Mudar todos os nomes para 'index.extensao'
+- Instalar as dependencias npm install --save x
+    *react
+    *react-dom
+    *react-script
+- package.json 
+    "start": "react-scripts start"
+- Adc no início do index.js :
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+    import './index.css'
+
+24-10
+Faltei
+
+25-10
+- Mexendo com Netlify
+    *Versão para subir =/ das versões 'originais'
+        >Isso para gerar uma versão mais compacta, que vai ser lida mais facilmente pelo browser, mais rápido
+- npm start - esse nome 'start' está no 'package.json', scripts
+    *Todas as vezes que baixar um projeto do GitHub (ele não vem com o node_modules), dar node start
+        >Esse nome start pode ser diferente, como xuxu, mas se usa start
+- npm run build - o que vamos upar para o servidor
+    *Esse build também foi inserido dentro de 'package.json', com um nome certo escolhido
+        >Esse comando só é rodado quando tiver uma versão pronta para ser subida pro servidor
+- Estados são importantes 
+    *Cada componente tem o seu objeto estado (true/false)
+    *Sempre que quisermos alterar a tela temos que alterar o estado do componente
+        > Habilitado-desabilitado / aberto-fechado
+- Estudar mais sobre 'class' em JS
+    *o que é 'extends', 'super', 'this.' e 'constructor'
+Camila está exemplificando 'class' (Um pouco do que vi no curso do JS Ninja)
+    class Pessoa {
+        constructor(nomeRecebido, sobrenomeRecebido){
+            this.nome = nomeRecebido
+            this.sobrenome = sobrenomeRecebido
+        }
+    }
+    const camis = new Pessoa('Camila', 'Belo')
+
+    class Paciente extends Pessoa{
+        constructor(nomeRecebido, sobrenomeRecebido, pesoRecebido, alturaRecebida){
+            super (nomeRecebido, sobrenomeRecebido)
+            this.peso = pesoRecebido
+            this.altura = alturaRecebida
+        }
+    }
+
+    class Animal{
+        constructor(racaRecebida, anosRecebidos, foiVacinado){
+            this.raca = racaRecebida
+            this.anos = anosRecebidos
+            this.vacinado = foiVacinado
+        }
+        vacinar(){
+            this.vacinado = true
+        }
+    }
+-A função construtora recebe tudo que ela precisa para construir o objeto
+- Quando quero acessar algo da própria classe, utilizo o 'this'
+- Dentro de classe não precisamos usar a palavra function
+
+26-10
+
+> Estudando criação de objetos em JavaScript <
+
+State of JavaScript
+- There isn't a default JS enviroment
+    *Várias empresas adotam diferentes padrões, e ninguém nunca parou para estabelecer um default como em outras linguagens, ex, Python
+- Em vista disso, não existe um "jeito certo" de fazer object orientation in JS
+
+let dog = {
+    sound: 'woof',
+    talk: function() {
+        console.log(this.sound)
+    }
+}
+
+dog.talk() // "woof"
+
+- In JS, I can assign a function to a variable
+    *Podemos fazer isso porque JS também é uma functional programming language, além de ser uma object oriented language
+
+let talkFunction = dog.talk
+talkFunction() // undefined --- porque??
+
+- Quando ações como essa acima são chamadas, elas batem de frente com o conceito funcional/objeto da linguagem
+    * Ou seja, o 'this' da variavel dog, não se refere mais a dog quando chamada nesse contexto
+    *Colocando de um modo mais visual:
+        let talkFunction = function() {
+            console.log(this.sound) -- esse this não está mais se referindo a nada, ele não funciona nesse cenário
+        }
+        talkFunction() // undefined
+- Forçando a conexão:
+    let talkFunction = dog.talk
+    let boundFunction = talkFunction.bind(dog) --- .bind força o this ficar preso a dog 
+    boundFunction() // woof
+
+- Ex mais comum no dia a dia:
+    let button = document.getElementById('myNiceButton')
+
+    button.addEventListener('click', dog.talk.bind(dog)) --- bind prende o this ao dog
+
+Mais exemplos usando this:
+
+    function talk() {
+        console.log(this.sound)
+    }
+    let boromir = {
+        sound: 'Onde does not simply walk into mordor!'
+    }
+
+    let talkBoundToBoromir = talk.bind(boromir)
+    talkBoundToBoromir() // Onde does not simply walk into mordor!
+
+- Em JS, funções também são valores que você simplesmente pode passar por ai -- igual strings, boolean, números
+
+- Outro exemplo diferente, em que não se precisa usar a propriedade bind
+    let talk = function () {
+        console.log(this.sound)
+    }
+    let boromir = {
+        speak: talk,
+        sound: 'Onde does not simply walk into mordor!'
+    }
+    boromir.speak() // Onde does not simply walk into mordor!
+    talk() // undefined
+    * Não se precisa usar bind pois JS entende que quando você passa talk como uma propriedade e atrela ela a boromir, this se refere a boromir
+    * 'talk()' retorna undefined porque está se referindo ao escopo global
+
+// * - - - - - - - - - - - - - - - -  - - - - - - -  - - - - - - -  - - - - - - * //
+
+Aula 5 
+
+..REVISANDO
+- Quando meu componente muda de estado, eu uso uma classe e não uma função
+
+- Sobre CAMPOS
+    * O componente pode mudar de estado?
+        > Sim
+    * O que muda? 
+        > state = {erro:"} ou {erro: 'Campo Obrigatório'}
+    * Qual o estado inicial? 
+        > state = {erro: "} //constructor
+    * O que faz ele mudar? // function onChange que verifica e eu devo ou na mostrar uma mensagem de erro
+        > if condição mostra erro
+            -- Email: obrigatorio, pelo menos 10 caracteres
+            -- Senha: obrigatorio, pelo menos 6 caracteres
+        > evento de change (digita no campo)
+        > evento de blur (sai do campo)
+
+- Toda classe que tem um componente precisa ter um render
+    * A função render deve retornar o HTML da tela
+    * A função render não recebe parâmetro
+        > No exemplo do código, preciso usar o this. para acessar o props
+
+class Pessoa {
+    constructor(nome, sobrenome){
+        this.nome = nome
+        this.sobrenome = sobrenome
+    }
+}
+
+class Paciente extends Pessoa {
+    constructor(peso, altura){
+        this.peso = peso
+        this.altura = altura
+    }
+}
+
+const Camila = new Paciente(54,170) // erro
+
+
+function valida() {} === const valida = () => {}
+
+
+

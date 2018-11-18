@@ -1,0 +1,31 @@
+Anotações Free Code Camp - React
+
+- A palavra 'class' é reservada para classes HTML, no JSX se usa 'className'
+- CameCase: onClick / onChange
+- Qualquer elemento JSX pode ser escrito como uma self-closing tag
+- 2 maneiras de criar um componente:
+    *function
+        > stateless functional component
+            recebe data e renderiza mas consegue acompanhar nem administrar suas mudanças
+        > o nome da função precisa começar com letra maiúscula
+    *class
+        > extends React.Component
+            a classe tem acesso as feautures do React como 'local state' e 'lifecycle hooks'
+        > constructor
+            super() - para chamar o constructor da class parent, nesse caso o React.Component
+            passar (props) para ambos
+- Se eu tenho uma function que forma algum componente e quero juntá-la a um outro elemento mais geral, 
+ex. App, pego o nome daquele componente feito com uma function 
+- Props!
+    *Em React é possível passar props ou propriedades para child components
+        > Essa propriedades geralmente são passadas como atributos personalizados dentro desses componentes
+- Arrays podem ser passadas como props também
+- Default props
+- Utilizar propTypes quando você já sabe que tipo de props você quer são boas práticas
+    *Ex: MyComponent.propTypes = { handleClick: PropTypes.func.isRequired } // checa se o prop handleClick é uma função
+- E quando eu quiser passar um props para uma class invés de uma function?
+    *Toda vez que eu quiser me referir ao interior de um componente classe, use a palavra-chave 'this'
+- 'Componentes funcionais sem estado' (stateless functional component) aceitam props como input e retornam a mesma visualização todas as vezes que passam o mesmo props
+- 'Componente sem estado' é uma class que extends React.Component e que não usa 'internal state'
+- 'Componentes com estado' (stateful components) são vistos apenas como componentes de React
+- STATE!

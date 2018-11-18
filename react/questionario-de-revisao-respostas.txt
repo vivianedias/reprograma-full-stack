@@ -1,0 +1,112 @@
+Respondendo questionário de React
+
+1) Componetizar um site é dividi-lo de acordo com os elementos que mais se repetem,
+esses devem ser nomeados como componentes para que se possa fazer o reuso deles em
+outras partes do site.
+- Aquele pedaço de tela aparece mais de uma vez, em mais de uma tela?
+- Ele é muito grande? 
+
+2)A diferença entre o DOM Virtual e o DOM Real é que no DOM Real muda-se diretamente
+através de linguagens como JS, o "Document Object Model" - o conteúdo, estrutura e 
+estilo de um documento. O DOM virtual é uma representação virtual do DOM Real, uma 
+cópia menos pesada do mesmo que permite alterações mais eficientes, adicionando mais 
+legíbilidade ao código através de JSX, por exemplo. 
+- O DOM Virtual é mais rápido pois ele cria os próprios elementos e tags na memória,
+chamando-os quando ele ver ser melhor.
+
+3) Não tá muito correto
+ class Link extends React.component{
+    constructor()
+
+    render(){
+        return(
+            <Link className="link" href="/conta" >Criar uma conta</Link>
+        ) a -> precisa de children: Criar uma conta 
+    }
+}
+
+4) A programação imperativa é mais sobre COMO você quer que uma ação seja executada
+através de uma lista de comandos. A programação declarativa se foca mais sobre O QUE
+se espera da ação ao escrever, sem listar os passos precisamente. No entanto, até mesmo
+na programação declarativa há uma camada imperativa abstrata subjacente.
+    > Não queremos saber como algo é feito, só queremos dar as infos.
+
+5) Ao desenvolver uma aplicação em React, não é necessário adaptá-la para diferentes
+dispositivos. Com um só código, ela é executável em qualquer dispositivo mobile ou PC.
+
+6) Não, o Babel é um compilador de código JSX para React puro. 
+
+7) - JSX significa JavaScript XML
+- "use strict";
+
+React.createElement(
+  "main",
+  { className: "pagina-login" },
+  React.createElement(
+    "h1",
+    null,
+    "Login"
+  ),
+  React.createElement(
+    "p",
+    null,
+    "Entre com seu email e senha."
+  ),
+  React.createElement(
+    Link,
+    { url: "/conta" },
+    "Criar uma conta"
+  ),
+  React.createElement(
+    Link,
+    { url: "/login" },
+    "Fazer Login"
+  ),
+  React.createElement(
+    Botao,
+    { className: "botao-danger" },
+    "Enviar"
+  ),
+  React.createElement(
+    Botao,
+    { className: "botao-warning" },
+    "Enviar"
+  )
+);
+- a class tem um nome diferente, é className, e o nome da tag deve começar com letra
+maiúscula.
+
+8) Criando uma function ou uma class
+
+9) <Navbar usuario={usuario} />
+P/ function: Receber um parâmetro chamado props 
+P/ classe: o props é recebido pelo construtor e se eu quero acessar qualquer um desses
+outros atributos, preciso chamar 'this.props.atributte'
+
+10)
+
+11)
+-<Login />
+- <Botao disabled>Enviar</Botao>
+- <Campo
+type=”password”
+required
+minLength={6}
+onChange={habilitaOuDesabilita}/>
+
+19) Preciso criar uma classe para um componente quando preciso de um estado dentro deles
+
+20) Constructor / render 
+
+21) O estado inicial sempre fica dentro do construtor 
+
+22) this.setState ({ })
+
+23) O setState muda o estado e chama o render de novo (não usar =, usar parênteses)
+
+26) - Ele não funciona, quando o código for executado, o navegador irá nos mostrar um erro
+- export menu // export default menu
+- se ele for exportado como default, eu não preciso utilizar a chave. se ele não foi exportado
+como default, eu preciso usar a chave quando exportar
+
+27) 
