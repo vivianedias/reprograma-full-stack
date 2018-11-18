@@ -9,13 +9,18 @@ const io = readline.createInterface({
 });
 
 /////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 //                 SELECIONAR DIFICULDADE
+=======
+//                       DIFICULDADE
+>>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d
 /////////////////////////////////////////////////////////////////
 function selecioneDificuldade(){
     io.question('Selecione uma dificuldade: Fácil, Médio, Difícil.', (answer) => {
         const baixinha = answer.toLowerCase();
         if(baixinha === 'fácil' || baixinha === 'facil'){
             console.log('Você selecionou a dificuldade Fácil!')
+<<<<<<< HEAD
             let numeroTentativas = 0;
             const tryFacil = 20;
             while(tryFacil >= numeroTentativas){
@@ -37,6 +42,30 @@ function selecioneDificuldade(){
             while(tryDificil >= numeroTentativas2){
                 perguntar();
                 numeroTentativas2++;
+=======
+            i = 0;
+            while(i <= 20){
+                perguntar();
+                i++;
+            }
+        } else if (baixinha === 'médio' || baixinha === 'medio'){
+            console.log('Você selecionou a dificuldade Média.')
+            i = 0;
+            while(i <= 12){
+                perguntar();
+                i++;
+            }
+        } else if(baixinha === 'difícil' || baixinha === 'dificil'){
+            console.log('Você selecionou a dificuldade Difícil.')
+            i = 0;
+            while(i <= 3){
+                perguntar();
+                i++;
+            }
+            counter = 3; 
+            while(counter === 4){
+
+>>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d
             }
         }
     }) 
@@ -106,4 +135,10 @@ selecioneDificuldade();
 // subir no npm
 // usar o npm
 
+<<<<<<< HEAD
 // usar classes para modelar o jogo
+=======
+// usar classes para modelar o jogo
+
+// limitar o número de palpites conforme a dificuldade
+>>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d
