@@ -1,26 +1,20 @@
+const readline = require('readline')
 /////////////////////////////////////////////////////////////////
 //                       CRIANDO A QUESTÃO
 /////////////////////////////////////////////////////////////////
-const readline = require('readline')
-
-const io = readline.createInterface({
+const inputOutput = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
 /////////////////////////////////////////////////////////////////
-<<<<<<< HEAD
 //                 SELECIONAR DIFICULDADE
-=======
-//                       DIFICULDADE
->>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d
 /////////////////////////////////////////////////////////////////
 function selecioneDificuldade(){
-    io.question('Selecione uma dificuldade: Fácil, Médio, Difícil.', (answer) => {
+    inputOutput.question('Selecione uma dificuldade: Fácil, Médio, Difícil.', (answer) => {
         const baixinha = answer.toLowerCase();
         if(baixinha === 'fácil' || baixinha === 'facil'){
             console.log('Você selecionou a dificuldade Fácil!')
-<<<<<<< HEAD
             let numeroTentativas = 0;
             const tryFacil = 20;
             while(tryFacil >= numeroTentativas){
@@ -29,43 +23,19 @@ function selecioneDificuldade(){
             }
         } else if (baixinha === 'médio' || baixinha === 'medio'){
             console.log('Você selecionou a dificuldade Média.')
-            let numeroTentativas1 = 0;
+            let numeroTentativass = 0;
             const tryMedio = 12;
-            while(tryMedio >= numeroTentativas1){
+            while(tryMedio >= numeroTentativass){
                 perguntar();
-                numeroTentativas1++;
+                numeroTentativass++;
             }
         } else if(baixinha === 'difícil' || baixinha === 'dificil'){
             console.log('Você selecionou a dificuldade Difícil.')
-            let numeroTentativas2 = 0;
+            let numTentativas2 = 0;
             const tryDificil = 6;
-            while(tryDificil >= numeroTentativas2){
+            while(tryDificil >= numTentativas2){
                 perguntar();
-                numeroTentativas2++;
-=======
-            i = 0;
-            while(i <= 20){
-                perguntar();
-                i++;
-            }
-        } else if (baixinha === 'médio' || baixinha === 'medio'){
-            console.log('Você selecionou a dificuldade Média.')
-            i = 0;
-            while(i <= 12){
-                perguntar();
-                i++;
-            }
-        } else if(baixinha === 'difícil' || baixinha === 'dificil'){
-            console.log('Você selecionou a dificuldade Difícil.')
-            i = 0;
-            while(i <= 3){
-                perguntar();
-                i++;
-            }
-            counter = 3; 
-            while(counter === 4){
-
->>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d
+                numTentativas++;
             }
         }
     }) 
@@ -75,7 +45,7 @@ function selecioneDificuldade(){
 //                       PERGUNTA
 /////////////////////////////////////////////////////////////////
 function perguntar() {
-    io.question('Adivinhe um número de 0 a 100!', (answer) => {
+    inputOutput.question('Adivinhe um número de 0 a 100!', (answer) => {
         if (!/^[0-9]+$/.test(answer)){
             console.log('Somente números são caracteres válidos.')
             perguntar();
@@ -112,7 +82,7 @@ function condicoes(answer) {
 //                      JOGAR NOVAMENTE?
 /////////////////////////////////////////////////////////////////
 function jogarNovamente(){
-    io.question('Deseja jogar novamente? Responda "s" para SIM ou "n" para NÃO.', (answer) => aceitou(answer));
+    inputOutput.question('Deseja jogar novamente? Responda "s" para SIM ou "n" para NÃO.', (answer) => aceitou(answer));
 }
 
 function aceitou(answer){
@@ -120,7 +90,7 @@ function aceitou(answer){
     if (baixinha === 's'){
         perguntar();
     } else{
-        io.close();
+        inputOutput.close();
     }
 }
 
@@ -130,15 +100,3 @@ function aceitou(answer){
 //                      RODAR O JOGO
 /////////////////////////////////////////////////////////////////
 selecioneDificuldade();
-
-// transformar em módulo npm
-// subir no npm
-// usar o npm
-
-<<<<<<< HEAD
-// usar classes para modelar o jogo
-=======
-// usar classes para modelar o jogo
-
-// limitar o número de palpites conforme a dificuldade
->>>>>>> 27c90658b2858d0e23afab609c592f90cfa0901d

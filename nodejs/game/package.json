@@ -1,0 +1,23 @@
+{
+  "name": "guessing-number-game",
+  "version": "1.0.0",
+  "description": "It's a very simples game where you guess the random number generate. You can choose the difficulty and have a limited trys counter. ",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivianedias/reprograma-fullstack.git"
+  },
+  "keywords": [
+    "guesseing",
+    "game"
+  ],
+  "author": "Viviane Dias",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivianedias/reprograma-fullstack/issues"
+  },
+  "homepage": "https://github.com/vivianedias/reprograma-fullstack#readme"
+}
