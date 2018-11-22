@@ -37,3 +37,30 @@ emitter.on('messageLogged', function(){ // parecido com addEventListener
 - Comunicação da API com o banco de dados se chama persistência
 - Pegando o objeto e transformando em JSON -> para criar um server 
 - Loadash
+
+- (req, res) -> request, response 
+
+Servidor com node puro, agora usando Express
+    - sistema de rotas, tipo de método
+        * 1º param: string com o path  
+        * 2º (req, res) -- req:o que o usuário está pedindo res: resposta para o usuario
+
+Dados - resources 
+
+PUT - Edita tudo, além do que você pede, tem que enviar o que tinha antes tb
+PATCH - Edita somente o que você requisita
+GET - Pega
+
+npm install -g nodemon - para nao precisar fechar e abrir novamente o servidor toda vez que atualizar
+    *'nodemon file.js'
+
+JOI - plugin de validação
+
+>> temporal coupling -- functional programming? 
+
+> Spreading: '...'
+    * para não colocar um obj dentro de um obj ou uma própria array, ele coloca o conteúdo do outro same type em um type (obj ou arr) só 
+    arr1 = [4, 5, 6]
+    arr2 = [1, 2, 3]
+    arr3 = [...arr1, ...arr2]
+    Array(6) [ 4, 5, 6, 1, 2, 3 ]

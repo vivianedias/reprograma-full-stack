@@ -29,3 +29,205 @@ ex. App, pego o nome daquele componente feito com uma function
 - 'Componente sem estado' é uma class que extends React.Component e que não usa 'internal state'
 - 'Componentes com estado' (stateful components) são vistos apenas como componentes de React
 - STATE!
+    // inside the constructor
+        this.state = {
+            // describe your state here
+        }
+    * Se quero acessar algum estado dentro do return do render, devo utilizar '{ }'
+    * State allows you to track important data in your app and render a UI in response to changes in this data. If your data changes, your UI will change. 
+        > React uses what is called a virtual DOM, to keep track of changes behind the scenes. 
+        > When state data updates, it triggers a re-render of the components using that data - including child components that received the data as a prop. 
+        > React updates the actual DOM, but only where necessary. This means you don't have to worry about changing the DOM. You simply declare what the UI should look like."
+    * O estado é local, encapsulado a não ser que você passe para os child como props
+    * Outro modo de acessar o state é colocando-o em uma variável antes do render e depois chamando ela dentro do render, onde eu quiser
+    * Atualizar o state usando: 
+        > this.setState({
+            username: 'Lewis' // não chama o state antigo, só passa uma nova prop, acho que tem que ser com o mesmo nome da antiga
+        })
+- Bind 'this' to a Class method
+    * Geralmente no método da classe para chamar uma propriedade da classe como props ou state, se usa 'this.'
+        > usando 'bind(this)' você junta o 'this.' com a classe e não será indefinido
+        Ex: class Counter extends React.Component {
+              constructor(props) {
+                super(props);
+                this.state = {
+                  count: 0
+                };
+                // change code below this line
+                this.increment = this.increment.bind(this) 
+                this.decrement = this.decrement.bind(this)
+                this.reset = this.reset.bind(this)
+                // change code above this line
+              }
+              // change code below this line
+            increment(){
+              this.setState({
+                count: this.state.count + 1
+              })
+            }
+
+            decrement(){
+              this.setState({
+                count: this.state.count - 1
+
+              })
+            }
+
+            reset(){
+              this.setState({count: 0})
+            }
+              // change code above this line
+              render() {
+                return (
+                  <div>
+                    <button className='inc' onClick={this.increment}>Increment!</button>
+                    <button className='dec' onClick={this.decrement}>Decrement!</button>
+                    <button className='reset' onClick={this.reset}>Reset</button>
+                    <h1>Current Count: {this.state.count}</h1>
+                  </div>
+                );
+              }
+            };
+- Monitorar o estado de um valor, e renderizar esse valor conforme ele muda
+- Input também pode ter state
+- Pass State as Props to Child Components
+    * Um app tem vários estados, e seus child componentes precisam de um estado só desses muitos
+        > data flow unidirecional - os dados vem de uma direção (topo da árvore de componentes)
+    * Separação da lógica entre estados e UI
+    * Em um parent component, renderizar um child component que pega os estados que ele precisa 
+    do parent component, e renderiza esses states como props no child component 
+        > Então o que vem do parent component "this.state.x" vai pro child component -> "this.props.x"
+- Você também pode passar mais do que state para child components, pode passar funções handler ou 
+qualquer método definido em um componente React, para seu filho -> usando 'this.props.x'
+Ex: 
+    class MyApp extends React.Component {
+      constructor(props) {
+        super(props);
+        this.state = {
+          inputValue: ''
+        }
+        this.handleChange = this.handleChange.bind(this);
+      }
+      handleChange(event) {
+        this.setState({
+          inputValue: event.target.value // novo estado, dps que o usuario coloca um novo input
+        });
+      }
+
+      render() {
+        return (
+           <div>
+            { /* change code below this line */ }
+            <GetInput input={this.state.inputValue} handleChange={this.handleChange}/> { /* pega o estado original + estado em mudança -- o props passado aqui (parent component) tem que ser chamado no child component com o mesmo nome, ou seja, se é input={this.state.inputValue} então vou chamar no child component como 'this.props.input' */ }
+            <RenderInput input={this.state.inputValue}/> { /* pega o inputValue já com o state alterado */ }
+            { /* change code above this line */ }
+           </div>
+        );
+      }
+    };
+
+    class GetInput extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        console.log(this.props.input)
+        return (
+          <div>
+            <h3>Get Input:</h3>
+            <input
+              value={this.props.input}
+              onChange={this.props.handleChange}/>
+          </div>
+        );
+      }
+    };
+
+    class RenderInput extends React.Component {
+      constructor(props) {
+        super(props);
+      }
+      render() {
+        return (
+          <div>
+            <h3>Input Render:</h3>
+            <p>{this.props.input}</p>
+          </div>
+        );
+      }
+    };
+- Pass Callback as Props 
+    <GetInput input={this.state.inputValue} handleChange={this.handleChange}/> { /* pega o estado original + estado em mudança -- o props passado aqui (parent component) tem que ser chamado no child component com o mesmo nome, ou seja, se é input={this.state.inputValue}
+     então vou chamar no child component como 'this.props.input' */ }
+- Métodos de Ciclo de Vida dos Componentes
+    * componentWillMount()
+    * componentDidMount()
+        > chamar uma api que vá interagir com React nesse método
+        > Eficiente para colocar event listeners
+    * componentWillReceiveProps()
+    * shouldComponentUpdate()
+        > Optimizar Re-Renders com shouldComponentUpdate - só atualiza se queremos que o componente atualize
+            usando 'nextProps' e 'nextState' como parametros
+            --  You can compare the current props (this.props) to the next props (nextProps) to determine if 
+            you need to update or not, and return true or false accordingly.
+            Ex:class OnlyEvens extends React.Component {
+                  constructor(props) {
+                    super(props);
+                  }
+                  shouldComponentUpdate(nextProps, nextState) {
+                    console.log('Should I update?');
+                     // change code below this line
+                     const even = 4 % 2
+                    if(this.props.value % 2 !== 0 ){
+                      return true;
+                    }
+                    return false;
+                     // change code above this line
+                  }
+                  componentWillReceiveProps(nextProps) {
+                    console.log('Receiving new props...');
+                  }
+                  componentDidUpdate() {
+                    console.log('Component re-rendered.');
+                  }
+                  render() {
+                    return <h1>{this.props.value}</h1>
+                  }
+                };
+
+                class Controller extends React.Component {
+                  constructor(props) {
+                    super(props);
+                    this.state = {
+                      value: 0
+                    };
+                    this.addValue = this.addValue.bind(this);
+                  }
+                  addValue() {
+                    this.setState({
+                      value: this.state.value + 1
+                    });
+                  }
+                  render() {
+                    return (
+                      <div>
+                        <button onClick={this.addValue}>Add</button>
+                        <OnlyEvens value={this.state.value}/>
+                      </div>
+                    );
+                  }
+                };
+
+    * componentWillUpdate()
+    * componentDidUpdate()
+    * componentWillUnmount()
+
+    * Mount =/ de Render
+        > quando uma janela carrega, todos os componentes 
+        estão montados e então métodos com 'mount' são chamados
+- As functions na class são chamadas como 'this.function'
+
+- Estilos Inline
+    * Passa os estilos como objeto e não string: <div style={{color: "yellow", fontSize: 16}}>Mellow Yellow</div>
+        > palavras são dentro de strings e px (unidades de medida), não precisa, só se quiser mudar a unidade, aí especificar usando '4em', etc.
+        

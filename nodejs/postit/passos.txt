@@ -1,0 +1,7 @@
+app.post - Criar o postit - Create
+
+app.get - Read
+
+app.put - Update
+
+app.delete - Delete
