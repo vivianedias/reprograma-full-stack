@@ -26,6 +26,18 @@ app.post('/api/postits', (req, res) => {
     texto: req.body.texto
   };
 
+  // Se for encontrado, faça a validação dos campos obrigatórios
+  const schema = {
+    titulo: Joi.string().min(3).required(),
+    texto: Joi.string().min(3).required()
+  }
+  const validation = Joi.validate(req.body, schema);
+
+  // Se estiver inválido, retorne um status que condiz e uma mensagem
+  if (validation.error){
+    return res.status(400).send(validation.error.details[0].message);
+  }
+
   postits.push(newPostit);
   res.send(newPostit);
 });
